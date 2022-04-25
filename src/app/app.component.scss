@@ -1,0 +1,20 @@
+ul {
+  list-style: none;
+  padding: 0%;
+}
+
+.container {
+  width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.btn-list {
+  display: flex;
+  align-items: center;
+}
+.btn-list > li {
+  margin-right: 20px;
+}
+.btn-list > li:last-child {
+  margin-right: 0px;
+}
