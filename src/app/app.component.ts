@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+export interface AppComponent {
+  [index: string]: any;
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,14 +13,8 @@ export class AppComponent {
   neutral = 0;
   bad = 0;
   feedbacksArray = ['good', 'neutral', 'bad'];
-  updateNeutralFeedback(e: number) {
-    this.neutral += e;
-  }
-  updateBadFeedback(e: number) {
-    this.bad += e;
-  }
-  updateGoodFeedback(e: number) {
-    this.good += e;
+  updateFeedback(s: string) {
+    this[s] += 1;
   }
   countTotalFeedback() {
     return this.neutral + this.good + this.bad;

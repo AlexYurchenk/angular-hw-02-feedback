@@ -3,23 +3,15 @@
   <ul class="btn-list">
     <li id="{{ i }}" *ngFor="let e of feedbacksArray; let i = index">
       <app-button
-        (onNeutralFeedbackClick)="updateNeutralFeedback($event)"
-        (onBadFeedbackClick)="updateBadFeedback($event)"
-        (onGoodFeedbackClick)="updateGoodFeedback($event)"
+        (onFeedbackClick)="updateFeedback($event)"
         [feedbackType]="e"
       ></app-button>
     </li>
   </ul>
   <h2>Statistic</h2>
   <ul *ngIf="good !== 0 || neutral !== 0 || bad !== 0; else noFeedbacks">
-    <li>
-      <p>good: {{ good }}</p>
-    </li>
-    <li>
-      <p>neutral: {{ neutral }}</p>
-    </li>
-    <li>
-      <p>bad: {{ bad }}</p>
+    <li *ngFor="let f of feedbacksArray">
+      <p>{{ f }}: {{ this[f] }}</p>
     </li>
     <li>
       <p>Positive feedbacks: {{ countPositiveFeedbackPercentage() }}%</p>
