@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 
 export interface AppComponent {
-  [index: string]: any;
+  good: number;
+  neutral: number;
+  bad: number;
+  updateFeedback(s: 'good' | 'bad' | 'neutral'): void;
+  countTotalFeedback(): number;
+  countPositiveFeedbackPercentage(): string;
 }
 @Component({
   selector: 'app-root',
@@ -12,8 +17,8 @@ export class AppComponent {
   good = 0;
   neutral = 0;
   bad = 0;
-  feedbacksArray = ['good', 'neutral', 'bad'];
-  updateFeedback(s: string) {
+  feedbacksArray: ['good', 'neutral', 'bad'] = ['good', 'neutral', 'bad'];
+  updateFeedback(s: 'good' | 'bad' | 'neutral') {
     this[s] += 1;
   }
   countTotalFeedback() {

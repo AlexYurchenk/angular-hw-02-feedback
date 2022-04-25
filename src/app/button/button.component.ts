@@ -7,12 +7,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
   @Input() feedbackType!: string;
-  @Output() onFeedbackClick: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onFeedbackClick: EventEmitter<'good' | 'bad' | 'neutral'> =
+    new EventEmitter<'good' | 'bad' | 'neutral'>();
 
   constructor() {}
   onClick(e: Event) {
     this.onFeedbackClick.emit(
-      (<HTMLButtonElement>e.target).textContent as string
+      (<HTMLButtonElement>e.target).textContent as 'good' | 'bad' | 'neutral'
     );
   }
   ngOnInit(): void {}
